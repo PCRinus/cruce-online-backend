@@ -4,6 +4,7 @@
     "paths": {
       "@@player/*": ["./src/player/*"],
       "@@room/*": ["./src/room/*"],
+      "@@shared/*": ["./src/shared/*"],
     }
   }
 }
