@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@@player/*": ["./src/player/*"],
+      "@@room/*": ["./src/room/*"],
+    }
+  }
+}
