@@ -8,7 +8,7 @@ type RoomCreatedEvent = CreateRoomDto;
 export class RoomGateway {
   @SubscribeMessage('create-room')
   handleCreateRoom(socket: Socket, payload: CreateRoomDto): WsResponse<RoomCreatedEvent> {
-    socket.join(payload.roomId);
+    socket.join(payload.roomName);
 
     return {
       event: 'room-created',
