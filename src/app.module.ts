@@ -15,9 +15,6 @@ import { LoggerModule } from 'nestjs-pino';
     LobbyModule,
     LoggerModule.forRoot({
       pinoHttp: {
-        customProps: () => ({
-          context: 'HTTP',
-        }),
         transport: {
           target: 'pino-pretty',
           options: {
