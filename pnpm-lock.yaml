@@ -52,6 +52,9 @@ dependencies:
     version: 4.7.2
 
 devDependencies:
+  '@golevelup/ts-jest':
+    specifier: ^0.4.0
+    version: 0.4.0
   '@nestjs/cli':
     specifier: ^10.0.0
     version: 10.1.17
@@ -584,6 +587,10 @@ packages:
   /@eslint/js@8.48.0:
     resolution: {integrity: sha512-ZSjtmelB7IJfWD2Fvb7+Z+ChTIKWq6kjda95fLcQKNS5aheVHn4IkfgRQE3sIIzTcSLwLcLZUD9UBt+V7+h+Pw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    dev: true
+
+  /@golevelup/ts-jest@0.4.0:
+    resolution: {integrity: sha512-ehgllV/xU8PC+yVyEUtTzhiSQKsr7k5Jz74B6dtCaVJz7/Vo7JiaACsCLvD7/iATlJUAEqvBson0OHewD3JDzQ==}
     dev: true
 
   /@humanwhocodes/config-array@0.11.11:
