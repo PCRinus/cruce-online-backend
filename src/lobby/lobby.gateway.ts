@@ -8,7 +8,6 @@ export class LobbyGateway implements OnGatewayConnection, OnGatewayDisconnect {
   private readonly server: Server;
 
   private readonly logger = new Logger(LobbyGateway.name);
-
   private playerCount = 0;
 
   constructor() {}
