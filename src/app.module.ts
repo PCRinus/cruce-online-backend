@@ -5,6 +5,7 @@ import { SharedModule } from './shared/shared.module';
 import { GameModule } from './game/game.module';
 import { LobbyModule } from './lobby/lobby.module';
 import { LoggerModule } from 'nestjs-pino';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { LoggerModule } from 'nestjs-pino';
         },
       },
     }),
+    AuthModule,
   ],
 })
 export class AppModule {}
