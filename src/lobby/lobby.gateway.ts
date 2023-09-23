@@ -2,7 +2,7 @@ import { Logger } from '@nestjs/common';
 import { OnGatewayConnection, OnGatewayDisconnect, WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 
-@WebSocketGateway({ namespace: 'lobby-ws', cors: true })
+@WebSocketGateway({ namespace: 'lobby', cors: true })
 export class LobbyGateway implements OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer()
   private readonly server: Server;
@@ -18,7 +18,7 @@ export class LobbyGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
     this.playerCount++;
 
-    this.server.emit('get-player-count', { playersCount: this.playerCount });
+    this.server.emit('player-count', { playerCount: this.playerCount });
   }
 
   handleDisconnect(client: Socket) {
@@ -26,7 +26,7 @@ export class LobbyGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
     this.playerCount--;
 
-    this.server.emit('get-player-count', { playersCount: this.playerCount });
+    this.server.emit('player-count', { playerCount: this.playerCount });
   }
 
   async getPlayerCount(): Promise<number> {
