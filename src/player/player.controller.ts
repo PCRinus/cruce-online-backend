@@ -1,5 +1,5 @@
 import { PlayerService } from '@@player/player.service';
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Player')
@@ -12,7 +12,7 @@ export class PlayerController {
     return 123;
   }
 
-  @Post('/register-anonymous')
+  @Get('/register-anonymous')
   async registerAnonymous() {
     return this.playerService.registerAnonymous();
   }

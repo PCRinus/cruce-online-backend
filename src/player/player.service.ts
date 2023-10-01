@@ -8,6 +8,6 @@ export class PlayerService {
   registerAnonymous(): string {
     const cuid = this.idService.generateCuid();
 
-    return `Anonymous-${cuid}`;
+    return `Player-${cuid}`;
   }
 }
