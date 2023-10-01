@@ -1,7 +1,13 @@
 import { CreateRoomDto } from '@@room/dtos/create-room.dto';
 import { IdService } from '@@shared/id/id.service';
 import { Logger } from '@nestjs/common';
-import { OnGatewayConnection, SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
+import {
+  MessageBody,
+  OnGatewayConnection,
+  SubscribeMessage,
+  WebSocketGateway,
+  WebSocketServer,
+} from '@nestjs/websockets';
 import type { Server, Socket } from 'socket.io';
 
 // type RoomCreatedEvent = CreateRoomDto;
@@ -14,9 +20,9 @@ type Room = {
   pointsToWin: number;
   turnTimeLimit: number;
 };
-
+// @UsePipes(new ValidationPipe())
 @WebSocketGateway({ namespace: 'room', cors: true })
-export class RoomGateway implements OnGatewayConnection{
+export class RoomGateway implements OnGatewayConnection {
   @WebSocketServer()
   private readonly server: Server;
 
@@ -28,12 +34,12 @@ export class RoomGateway implements OnGatewayConnection{
   handleConnection(client: Socket) {
     this.logger.log('New client connected', client.id);
 
-    this.server.emit('rooms', this.rooms)
+    this.server.emit('rooms', this.rooms);
   }
 
   @SubscribeMessage('create-room')
-  handleCreateRoom(socket: Socket, payload: CreateRoomDto) {
-    this.logger.log('create-room', socket.id, payload);
+  handleCreateRoom(@MessageBody() payload: CreateRoomDto) {
+    this.logger.log('create-room', payload);
 
     this.rooms.push({
       id: this.idService.generateCuid(),
